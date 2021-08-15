@@ -36,5 +36,19 @@ for (i in 1:1000){
 }
 
 print(mean(cover_68))
-
+print(sd(slope)/mean(slope_se))
 print(mean(cover_95))
+
+n0 = 20
+n1 = 30
+
+y_0 = rnorm(n0,2,5)
+y_1 = rnorm(n1,2,5)
+
+meany0 = mean(y_0); sdy0 = sd(y_0)/sqrt(n0)
+meany1 = mean(y_1); sdy1 = sd(y_1)/sqrt(n1)
+
+diff = meany0 - meany1
+
+sdcomp = sqrt(sdy0^2+sdy1^2)  ## Combined SE for the difference measurement
+
