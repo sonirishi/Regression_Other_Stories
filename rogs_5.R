@@ -80,3 +80,13 @@ for(i in 1:3){
     resid_all = c(resid_all,resid)
   }
 }
+ 
+df$residualoof = resid_all
+
+df_summ1 = df %>% group_by(z_aresnic) %>% summarise(mean_resid = mean(residualoof), 
+                                                   mad_resid = mad(residualoof))
+
+### binned residual out of fold and train data (oof being more useful) 
+
+plot(x=df_summ1$z_aresnic,y=df_summ1$mean_resid)
+points(x=df_summ$z_aresnic,y=df_summ$mean_resid,col='red')
